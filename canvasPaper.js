@@ -689,7 +689,7 @@ myPath.add(new Point(140, 90));
 myPath.closed = true;
 
 // Removing Segments and Paths
-var myCircle = new Path.Circle(new Point(300, 270), 50);
+var myCircle = new Path.Circle(new Point(750, 50), 40);
 myCircle.strokeColor = 'black';
 myCircle.selected = true;
 
@@ -699,36 +699,92 @@ myCircle.selected = true;
 
 // Creating Predefined Shapes
 // Circle Shaped Paths
-var myCircle = new Path.Circle(new Point(350,60), 20);
+var myCircle = new Path.Circle(new Point(750,50), 20);
 myCircle.fillColor = 'violet';
 myCircle.strokeColor = 'black';
 
 // Rectangle shaped Paths
-var rectangle = new Path.Rectangle(new Point(70,200), new Point(150,350));
+var rectangle = new Path.Rectangle(new Point(720,190), new Point(780,100));
 rectangle.strokeColor = 'brown';
 rectangle.fillColor = '#e9e9ff';
 // rectangle.selected = true;
 
 // Rectangle shape with rounded corner
-var rectangle = new Rectangle(new Point(50, 50), new Point(120, 90));
-var radius = new Size(20, 20);
+var rectangle = new Rectangle(new Point(850, 850), new Point(720, 790));
+var radius = new Size(10, 10);
 var path = new Path.Rectangle(rectangle, radius);
 path.fillColor = 'orange';
 path.strokeColor = 'black';
 
 // Regular Polygon shaped path
 // Create a triangle shaped path 
-var triangle = new Path.RegularPolygon(new Point(210, 300), 3, 50);
+var triangle = new Path.RegularPolygon(new Point(750, 260), 3, 50);
 triangle.fillColor = '#e9e9ff';
 triangle.selected = true;
 
 // Create a decagon shaped path 
-var decagon = new Path.RegularPolygon(new Point(300, 150), 10, 50);
+var decagon = new Path.RegularPolygon(new Point(750, 350), 10, 50);
 decagon.fillColor = '#e9e9ff';
 decagon.selected = true;
 
 // Using Color and Style
 var myPath = new Path({
-	segments: [[40, 115], [80, 180], [200, 20]],
+	segments: [[540, 315], [580, 380], [700, 220]],
 	selected: true
 });
+
+// strokeColor
+// myPath.strokeColor = 'orange'; // Or
+myPath.strokeColor = new Color(0.5, 0, 0.5);
+
+// fill Color
+// myPath.fillColor = '#000055'
+
+// StrokeWidth
+myPath.strokeWidth = 5;
+
+// StrokeCap
+myPath.strokeCap = 'round';
+
+// strokeJoin
+myPath.strokeJoin = 'round';
+
+// Dashed Stroke
+myPath.dashArray = [10, 12];
+
+var myStyle = {
+	strokeColor: '#00ffff',
+	fillColor: '#000000',
+	strokeWidth: 50
+};
+
+var myCircle = new Path.Circle({
+	center: [600, 150],
+	radius: 50
+});
+myCircle.style = myStyle;
+
+
+var path;
+
+// The mouse has to drag at least 20pt
+// before the next drag event is fired:
+tool.minDistance = 20;
+
+function onMouseDown(event) {
+	if (path) {
+		path.selected = false;
+	};
+	path = new Path();
+	path.strokeColor = 'black';
+	path.fullySelected = true;
+}
+
+function onMouseDrag(event) {
+	path.add(event.point);
+}
+
+function onMouseUp(event) {
+	path.selected = false;
+	path.smooth();
+}
