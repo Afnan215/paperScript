@@ -765,26 +765,55 @@ var myCircle = new Path.Circle({
 myCircle.style = myStyle;
 
 
-var path;
+// var path;
 
-// The mouse has to drag at least 20pt
-// before the next drag event is fired:
-tool.minDistance = 20;
+// // The mouse has to drag at least 20pt
+// // before the next drag event is fired:
+// tool.minDistance = 20;
 
-function onMouseDown(event) {
-	if (path) {
-		path.selected = false;
-	};
-	path = new Path();
-	path.strokeColor = 'black';
-	path.fullySelected = true;
-}
+// function onMouseDown(event) {
+// 	if (path) {
+// 		path.selected = false;
+// 	};
+// 	path = new Path();
+// 	path.strokeColor = 'black';
+// 	path.fullySelected = true;
+// }
 
-function onMouseDrag(event) {
-	path.add(event.point);
-}
+// function onMouseDrag(event) {
+// 	path.add(event.point);
+// }
 
-function onMouseUp(event) {
-	path.selected = false;
-	path.smooth();
-}
+// function onMouseUp(event) {
+// 	path.selected = false;
+// 	path.smooth();
+// }
+
+// Drawing plus in rectangle using paperScript
+var path = new Path();
+path.strokeColor = 'black';
+
+path.moveTo(new Point(0,200));   
+path.lineTo(new Point(800,200));
+
+var myPath = new Path();
+myPath.strokeColor = 'black';
+myPath.moveTo(new Point(400,400));
+myPath.lineTo(new Point(400,0));
+console.log(myPath);
+// path.moveTo(new Point(400,400));
+// path.lineTo(new Point(400,0));
+
+// Drawing plus in rectangle using JavaScript
+var canvas = document.getElementById("myCanvas2");
+var ctx = canvas.getContext("2d");
+ctx.moveTo(0,100);
+ctx.lineTo(400,100);
+ctx.moveTo(200,200);
+ctx.lineTo(200,0);
+ctx.stroke();
+ctx.font = "18px Arial";
+ctx.fillStyle = 'purple';
+ctx.fillText("Enstchuldigung",50,50);
+ctx.strokeText("Bis Bald",50,150);
+// ctx.strokeColor = 'purple';
