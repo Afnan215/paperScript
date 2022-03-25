@@ -812,8 +812,10 @@ ctx.lineTo(400,100);
 ctx.moveTo(200,200);
 ctx.lineTo(200,0);
 ctx.stroke();
+// ctx.strokeWidth('5px');
 ctx.font = "18px Arial";
 ctx.fillStyle = 'purple';
-ctx.fillText("Enstchuldigung",50,50);
-ctx.strokeText("Bis Bald",50,150);
+// ctx.fillText("Enstchuldigung",50,50);
+// ctx.strokeText("Bis Bald",50,150);
 // ctx.strokeColor = 'purple';
+
