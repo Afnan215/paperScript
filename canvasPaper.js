@@ -819,3 +819,55 @@ ctx.fillStyle = 'purple';
 // ctx.strokeText("Bis Bald",50,150);
 // ctx.strokeColor = 'purple';
 
+// Smoothing Simplifying and Flattening
+
+var path = new Path({
+	segments: [[130, 275], [130, 225], [180, 225], [180, 275]],
+	strokeColor: 'black',
+	closed: true 
+});
+
+// Select the path, so we can see its handles:
+path.fullySelected = true;
+
+var copy = path.clone();
+copy.fullySelected = true;
+copy.position.x += 380;
+
+// copy.strokeColor = 'black';
+copy.smooth();
+
+
+// Flattening Paths
+// with a radius of 35:
+var path = new Path.Circle({
+	center: [80, 350],
+	radius: 35
+});
+
+// Select the path, so we can inspect its segments:
+path.selected = true;
+
+// Create a copy of the path and move it by 150 points:
+var copy = path.clone();
+copy.position.x += 50;
+
+// Flatten the copied path, with a maximum error of 4 points:
+copy.flatten(4);
+
+// Create a rectangle shaped path with its top left point at
+// {x: 75, y: 75} and a size of {width: 75, height: 75}
+var path = new Path.Rectangle({
+	point: [75, 75],
+	size: [75, 75],
+	strokeColor: 'black'
+});
+
+function onFrame(event) {
+	// Each frame, rotate the path by 3 degrees:
+	path.rotate(3);
+}
+
+// var path = new Path.Circle(new Point(180, 150), 35);
+
+// project.activeLayer.lastChild.fillColor = 'red';
